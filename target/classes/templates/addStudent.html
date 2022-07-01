@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Course Management - Ajouter un étudiant</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	      <div class="container">
+	        <a class="navbar-brand" href="/">Course Management</a>
+	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+	          <span class="navbar-toggler-icon"></span>
+	        </button>
+	
+	        <div class="collapse navbar-collapse" id="navbarsExample07">
+	          <ul class="navbar-nav mr-auto">
+	            <li class="nav-item">
+	              <a class="nav-link" href="/students">Afficher les étudiants</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href="/teachers">Afficher les professeurs</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href="/courses">Afficher les cours</a>
+	            </li>
+	          </ul>
+	        </div>
+	      </div>
+	</nav>
+
+	<br>
+	<div class="container">
+		<h1>Ajouter un nouveau étudiant</h1>	<br>
+		<div class="row">
+			<div class="col-lg-12 container justify-content-center card">
+				
+				<div class="card-body">
+					<form th:action="@{/students}" th:object = "${student}" method="POST">
+					  <div class="mb-3">
+					    <label for="IDnom" class="form-label">Nom</label>
+					    <input type="text" class="form-control" id="IDnom" name="nom" th:field="*{nom}">
+					  </div>
+					  <div class="mb-3">
+					    <label for="IDprenom" class="form-label">Prénom</label>
+					    <input type="text" class="form-control" id="IDprenom" name="prenom" th:field="*{prenom}">
+					  </div>
+					  <div class="mb-3">
+					    <label for="IDemail" class="form-label">Email</label>
+					    <input type="email" class="form-control" id="IDemail" name="email" th:field="*{email}">
+					  </div>
+					  <div class="mb-3">
+					  	<div class="form-check" th:each="student : ${students}">
+						  <input class="form-check-input" type="checkbox" th:id="${student.id}" th:value="${student.id}" th:field="*{courseStudents}">
+						  <label class="form-check-label" th:for="${student.id}" th:text="${student.toString}"></label>
+						</div>
+					  </div>
+					  <div class="mb-3">
+					  	<div class="form-check" th:each="course : ${courses}">
+						  <input class="form-check-input" type="checkbox" th:id="${course.id}" th:value="${course.id}" th:field="*{studentCourses}">
+						  <label class="form-check-label" th:for="${course.id}" th:text="${course.toString}"></label>
+						</div>
+					  </div>
+					  <button type="submit" class="btn btn-primary">Ajouter</button>
+					</form>
+				</div>
+			</div>
+		</div>
+			
+	</div>
+
+</body>
+</html>

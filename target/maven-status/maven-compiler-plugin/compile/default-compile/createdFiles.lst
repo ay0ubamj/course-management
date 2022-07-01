@@ -1,0 +1,8 @@
+com\coureM\services\implementation\StudentServiceImp.class
+com\coureM\entities\Course.class
+com\coureM\controllers\StudentController.class
+com\coureM\CourseManagementApplication.class
+com\coureM\entities\Student.class
+com\coureM\entities\Teacher.class
+com\coureM\repositories\StudentRepository.class
+com\coureM\services\StudentService.class
